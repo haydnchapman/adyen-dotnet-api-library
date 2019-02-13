@@ -26,10 +26,10 @@ namespace Adyen.EcommLibrary.Service
             return JsonConvert.DeserializeObject<PaymentResult>(jsonResponse);
         }
 
-        public PaymentResult Authorise(PaymentRequestThreeDS2 paymentRequest)
+        public PaymentResult Authorise(PaymentRequestThreeDS2 paymentRequest, string idempotencyKey = null)
         {
             var jsonRequest = Util.JsonOperation.SerializeRequest(paymentRequest);
-            var jsonResponse = _authorise.Request(jsonRequest);
+            var jsonResponse = _authorise.Request(jsonRequest, idempotencyKey);
             return JsonConvert.DeserializeObject<PaymentResult>(jsonResponse);
         }
 
@@ -40,10 +40,10 @@ namespace Adyen.EcommLibrary.Service
             return JsonConvert.DeserializeObject<PaymentResult>(jsonResponse);
         }
 
-        public async Task<PaymentResult> AuthoriseAsync(PaymentRequestThreeDS2 paymentRequest)
+        public async Task<PaymentResult> AuthoriseAsync(PaymentRequestThreeDS2 paymentRequest, string idempotencyKey = null)
         {
             var jsonRequest = Util.JsonOperation.SerializeRequest(paymentRequest);
-            var jsonResponse = await _authorise.RequestAsync(jsonRequest);
+            var jsonResponse = await _authorise.RequestAsync(jsonRequest, idempotencyKey);
             return JsonConvert.DeserializeObject<PaymentResult>(jsonResponse);
         }
 
@@ -54,24 +54,24 @@ namespace Adyen.EcommLibrary.Service
             return JsonConvert.DeserializeObject<PaymentResult>(jsonResponse);
         }
 
-        public async Task<PaymentResult> Authorise3DAsync(PaymentRequest3D paymentRequest3D)
+        public async Task<PaymentResult> Authorise3DAsync(PaymentRequest3D paymentRequest3D, string idempotencyKey = null)
         {
             var jsonRequest = JsonConvert.SerializeObject(paymentRequest3D);
-            var jsonResponse = await _authorise3D.RequestAsync(jsonRequest);
+            var jsonResponse = await _authorise3D.RequestAsync(jsonRequest, idempotencyKey);
             return JsonConvert.DeserializeObject<PaymentResult>(jsonResponse);
         }
 
-        public PaymentResult Authorise3DS2(PaymentRequestThreeDS2 paymentRequest)
+        public PaymentResult Authorise3DS2(PaymentRequestThreeDS2 paymentRequest, string idempotencyKey = null)
         {
             var jsonRequest = JsonConvert.SerializeObject(paymentRequest);
-            var jsonResponse =  _authorise3DS2.Request(jsonRequest);
+            var jsonResponse =  _authorise3DS2.Request(jsonRequest, idempotencyKey);
             return JsonConvert.DeserializeObject<PaymentResult>(jsonResponse);
         }
 
-        public async Task<PaymentResult> Authorise3DS2Async(PaymentRequestThreeDS2 paymentRequest)
+        public async Task<PaymentResult> Authorise3DS2Async(PaymentRequestThreeDS2 paymentRequest, string idempotencyKey = null)
         {
             var jsonRequest = JsonConvert.SerializeObject(paymentRequest);
-            var jsonResponse = await _authorise3DS2.RequestAsync(jsonRequest);
+            var jsonResponse = await _authorise3DS2.RequestAsync(jsonRequest,idempotencyKey);
             return JsonConvert.DeserializeObject<PaymentResult>(jsonResponse);
         }
 
