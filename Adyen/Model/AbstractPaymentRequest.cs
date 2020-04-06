@@ -39,7 +39,7 @@ namespace Adyen.Model
         public string Reference { get; set; }
         [DataMember(Name = "billingAddress", EmitDefaultValue = false)]
         public Address BillingAddress { get; set; }
-        [DataMember(Name = "shopperIp", EmitDefaultValue = false)]
+        [DataMember(Name = "shopperIP", EmitDefaultValue = false)]
         public string ShopperIp { get; set; }
         [DataMember(Name = "merchantAccount", EmitDefaultValue = false)]
         public string MerchantAccount { get; set; }
